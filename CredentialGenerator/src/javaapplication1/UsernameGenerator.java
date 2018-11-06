@@ -58,7 +58,7 @@ public class UsernameGenerator {
             
             String passwordEnc = getSHA256(passwordFinal);
             System.out.println(" ");
-            System.out.println("La version encriptada seria: \"" + passwordEnc + "\" ");
+            System.out.println("La version encriptada en SHA256 seria: \"" + passwordEnc + "\" ");
            // System.out.println(passwordEnc);
             //System.out.println();
 
