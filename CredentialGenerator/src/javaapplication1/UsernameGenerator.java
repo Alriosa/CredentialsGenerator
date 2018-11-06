@@ -37,7 +37,7 @@ public class UsernameGenerator {
             UsuarioGenerado = apellidoUsuario.substring(0, (apellidoUsuario.length() - 0)) + nombreUsuario.charAt(0) + num1 + num2;
             System.out.println("Su usuario : " + UsuarioGenerado);
             System.out.println(" ");
-            
+
             for (int i = 1; i <= 1; i++) {
                 System.out.print("" + (int) (Math.random() * 100));
                 password = ((int) (Math.random() * 100));
@@ -47,22 +47,24 @@ public class UsernameGenerator {
 
             passwordFinal = apellidoUsuario.substring(0, (apellidoUsuario.length() - 2)) + nombreUsuario.charAt(0) + passwordString;
             System.out.println(" ");
-            System.out.print("Esta seria la version sin encriptar: "+passwordFinal);
+            System.out.print("Esta seria la version sin encriptar: " + passwordFinal);
             System.out.println(" ");
 ///------------------------------------------------------
             ///SHA2
-             
-            
-            
-            
-            
+
             String passwordEnc = getSHA256(passwordFinal);
             System.out.println(" ");
             System.out.println("La version encriptada en SHA256 seria: \"" + passwordEnc + "\" ");
-           // System.out.println(passwordEnc);
+            // System.out.println(passwordEnc);
             //System.out.println();
+///------------------------------------------------------
+            ///AES
+            //System.out.println("plain pass=" + password);
+            String encryptedPassword = AESCrypt.encrypt(passwordString);
+            System.out.println("encrypted pass=" + encryptedPassword);
+            String decryptedPassword = AESCrypt.decrypt(encryptedPassword);
+            System.out.println("decrypted pass=" + decryptedPassword);
 
-            
         } catch (Exception e) {
             System.out.println("Error");
             e.printStackTrace();
