@@ -9,6 +9,7 @@ package codepack;
  *
  * @author arios
  */
+import static codepack.SHA256Crypt.getSHA256;
 import java.io.*;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -35,6 +36,7 @@ public class UsernameGenerator {
             //to ensure UsuarioGenerado is unique
 
             UsuarioGenerado = apellidoUsuario.substring(0, (apellidoUsuario.length() - 0)) + nombreUsuario.charAt(0) + num1 + num2;
+            System.out.println();
             System.out.println("Su usuario : " + UsuarioGenerado);
             System.out.println(" ");
 
@@ -46,34 +48,31 @@ public class UsernameGenerator {
             String passwordString = Integer.toString(password);
 
             passwordFinal = apellidoUsuario.substring(0, (apellidoUsuario.length() - 2)) + nombreUsuario.charAt(0) + passwordString;
-            System.out.println(" ");
-            System.out.print("Esta seria la version sin encriptar: " + passwordFinal);
-            System.out.println(" ");
+         
+            System.out.println("Esta seria la version sin encriptar: " + passwordFinal);
+   
 ///------------------------------------------------------
             ///SHA2
 
-//            String passwordEnc = getSHA256(passwordFinal);
-//            System.out.println(" ");
-//            System.out.println("La version encriptada en SHA256 seria: \"" + passwordEnc + "\" ");
-//            // System.out.println(passwordEnc);
-            //System.out.println();
+            String passwordEnc = getSHA256(passwordFinal);
+
+            System.out.println("La version encriptada en SHA256 seria: \"" + passwordEnc + "\" ");
+      
 ///------------------------------------------------------
             ///AES
             //System.out.println("plain pass=" + password);
-            System.out.println(" ");
+          
             String encryptedPassword = AESCrypt.encrypt(passwordString);
-            System.out.println(" ");
+           
             System.out.println("La version encriptada en AES seria:" + encryptedPassword);
-            System.out.println(" ");
+           
             String decryptedPassword = AESCrypt.decrypt(encryptedPassword);
-            System.out.println(" ");
+       
             System.out.println("La version desencriptada en AES seria: " + decryptedPassword);
-            System.out.println(" ");    
+         
         } catch (Exception e) {
             System.out.println("Error");
             e.printStackTrace();
         }
-    }
-
-   
+    } 
 }
