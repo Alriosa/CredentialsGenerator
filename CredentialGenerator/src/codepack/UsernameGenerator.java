@@ -39,7 +39,7 @@ public class UsernameGenerator {
             System.out.println(" ");
 
             for (int i = 1; i <= 1; i++) {
-                System.out.print("" + (int) (Math.random() * 100));
+                // System.out.print("" + (int) (Math.random() * 100));
                 password = ((int) (Math.random() * 100));
 
             }
