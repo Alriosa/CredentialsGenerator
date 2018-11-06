@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication1;
+package codepack;
 
 /**
  *
@@ -52,37 +52,28 @@ public class UsernameGenerator {
 ///------------------------------------------------------
             ///SHA2
 
-            String passwordEnc = getSHA256(passwordFinal);
-            System.out.println(" ");
-            System.out.println("La version encriptada en SHA256 seria: \"" + passwordEnc + "\" ");
-            // System.out.println(passwordEnc);
+//            String passwordEnc = getSHA256(passwordFinal);
+//            System.out.println(" ");
+//            System.out.println("La version encriptada en SHA256 seria: \"" + passwordEnc + "\" ");
+//            // System.out.println(passwordEnc);
             //System.out.println();
 ///------------------------------------------------------
             ///AES
             //System.out.println("plain pass=" + password);
+            System.out.println(" ");
             String encryptedPassword = AESCrypt.encrypt(passwordString);
-            System.out.println("encrypted pass=" + encryptedPassword);
+            System.out.println(" ");
+            System.out.println("La version encriptada en AES seria:" + encryptedPassword);
+            System.out.println(" ");
             String decryptedPassword = AESCrypt.decrypt(encryptedPassword);
-            System.out.println("decrypted pass=" + decryptedPassword);
-
+            System.out.println(" ");
+            System.out.println("La version desencriptada en AES seria: " + decryptedPassword);
+            System.out.println(" ");    
         } catch (Exception e) {
             System.out.println("Error");
             e.printStackTrace();
         }
     }
 
-    public static String getSHA256(String input) {
-
-        String toReturn = null;
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            digest.reset();
-            digest.update(input.getBytes("utf8"));
-            toReturn = String.format("%040x", new BigInteger(1, digest.digest()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return toReturn;
-    }
+   
 }
