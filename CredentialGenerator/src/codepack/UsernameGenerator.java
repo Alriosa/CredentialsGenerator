@@ -40,14 +40,23 @@ public class UsernameGenerator {
             System.out.println("Su usuario : " + UsuarioGenerado);
             System.out.println(" ");
 
-            for (int i = 1; i <= 1; i++) {
-                // System.out.print("" + (int) (Math.random() * 100));
-                password = ((int) (Math.random() * 100));
+            
+          
+                for (int i = 1; i <= 5; i++) {
+                int randomVar =((int) (Math.random() * 100));
+                Random randomNum = new Random();
+                int RandomKey = randomNum.nextInt(100)+55;
 
-            }
+                password = randomNum.nextInt(100)*RandomKey;
+                
+//                password = ((int) (Math.random() * 100));
+//                password = randomVar * password;
+                }
+            int RandomKey=0;
+            String RandomKeyAdd = Integer.toString(RandomKey);
             String passwordString = Integer.toString(password);
 
-            passwordFinal = apellidoUsuario.substring(0, (apellidoUsuario.length() - 2)) + nombreUsuario.charAt(0) + passwordString;
+            passwordFinal = apellidoUsuario.substring(0, (apellidoUsuario.length() - 1)) + nombreUsuario.charAt(0) + passwordString + RandomKeyAdd;
          
             System.out.println("Esta seria la version sin encriptar: " + passwordFinal);
    
@@ -61,8 +70,8 @@ public class UsernameGenerator {
 ///------------------------------------------------------
             ///AES
             //System.out.println("plain pass=" + password);
-          
-            String encryptedPassword = AESCrypt.encrypt(passwordString);
+           
+            String encryptedPassword = AESCrypt.encrypt(passwordFinal);
            
             System.out.println("La version encriptada en AES seria:" + encryptedPassword);
            
